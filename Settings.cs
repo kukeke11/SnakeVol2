@@ -25,11 +25,9 @@ namespace SnakeVol2
 
         public Settings()
         {
-            foodX = 35;
-            foodY = 21;
             Score = 0;
             Points = 100;
-            Speed = 150;
+            Speed = 120;
             GameOver = false;
             direction = Directions.down;
         }

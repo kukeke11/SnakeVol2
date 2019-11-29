@@ -14,6 +14,7 @@ namespace SnakeVol2
             SnakeBody.Clear();
             Snake head = new Snake { xPos = 35, yPos = 20, name="head",direction="down" };
             SnakeBody.Add(head);
+            generateFood();
         }
         public void showMenu(out string userAction)
         {
@@ -133,8 +134,11 @@ namespace SnakeVol2
                 }
                 else
                 {
+                    Settings.x = SnakeBody[i].xPos;
+                    Settings.y = SnakeBody[i].yPos;
                     SnakeBody[i].xPos = SnakeBody[i - 1].xPos;
                     SnakeBody[i].yPos = SnakeBody[i - 1].yPos;
+                    draw.deleteLastPoss();
                 }
             }
         }

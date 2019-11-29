@@ -17,7 +17,9 @@ namespace SnakeVol2
 
             List<Snake> SnakeBody = new List<Snake>();
             GameLogic gameLogic = new GameLogic();
-            Draw draw = new Draw();          
+            Draw draw = new Draw();
+            XML xml = new XML();
+            xml.ReadXML();
 
             gameLogic.showMenu(out userAction);
             do
@@ -39,22 +41,30 @@ namespace SnakeVol2
                             //Console.Clear();
                             //draw.DrawWalls();
                             //draw.DrawApple();
-                            Console.SetCursorPosition(0, 0);
+                            Console.SetCursorPosition(0, 0);                           
                             Console.WriteLine("Score: " + Settings.Score);
+                            Console.SetCursorPosition(30, 0);
                             gameLogic.keyPressed(command, SnakeBody);
-                            gameLogic.BodyRename(SnakeBody);
+                            xml.DisplayScores();
+                            //gameLogic.BodyRename(SnakeBody);
                             draw.DrawSnake(SnakeBody);
-                            draw.deleteLastPoss();
+                            //draw.deleteLastPoss();
                             if (Console.KeyAvailable) command = Console.ReadKey().Key;
                             if (Settings.GameOver)
                             {
+                                Console.Clear();
+                                string name;
                                 gameRunning = false;
-                                Console.SetCursorPosition(28, 20);
+                                Console.SetCursorPosition(20, 28);
                                 Console.WriteLine("YOU LOSE!");
-                                Console.SetCursorPosition(29, 20);
+                                Console.SetCursorPosition(20, 29);
                                 Console.WriteLine("Final Score:" + Settings.Score * 100);
-                                Console.SetCursorPosition(30, 20);
-                                Console.WriteLine("Press Enter to Continuel");
+                                Console.SetCursorPosition(20, 30);
+                                Console.WriteLine("Enter your Name to exit");
+                                xml.DisplayScores();
+                                Console.SetCursorPosition(20, 31);
+                                name = Console.ReadLine();
+                                xml.SaveScores(name, Settings.Score * 100);
                                 Console.ReadLine();
                                 Console.Clear();
                                 gameLogic.showMenu(out userAction);
@@ -64,10 +74,18 @@ namespace SnakeVol2
                         } while (gameRunning);
 
                         break;
+                    case "3":
+                    case "s":
+                    case "scores":
+                        Console.Clear();
+                        xml.DisplayScores();
+
+                        break;
                     case "2":
                     case "e":
                     case "exit":
                         isStayMeny = false;
+                        xml.WriteToXML<Score>();
                         Console.Clear();
                         break;
 
