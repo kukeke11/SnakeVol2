@@ -10,6 +10,7 @@ namespace SnakeVol2
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             string userAction = " ";
             bool gameRunning;
             bool isStayMeny = true;
