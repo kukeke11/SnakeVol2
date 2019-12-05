@@ -34,6 +34,7 @@ namespace SnakeVol2
                         gameLogic.gameStart(SnakeBody);
                         draw.DrawWalls();
                         draw.DrawSnake(SnakeBody);
+                        xml.DisplayScores();
 
                         ConsoleKey command = Console.ReadKey().Key;
                         do
@@ -44,8 +45,7 @@ namespace SnakeVol2
                             Console.SetCursorPosition(0, 0);                           
                             Console.WriteLine("Score: " + Settings.Score);
                             Console.SetCursorPosition(30, 0);
-                            gameLogic.keyPressed(command, SnakeBody);
-                            xml.DisplayScores();
+                            gameLogic.keyPressed(command, SnakeBody);                           
                             //gameLogic.BodyRename(SnakeBody);
                             draw.DrawSnake(SnakeBody);
                             //draw.deleteLastPoss();

@@ -10,12 +10,27 @@ namespace SnakeVol2
 {
     class XML
     {
+        int number;
         string path2 = @"C:\Users\marti\source\repos\SnakeVol2\SnakeVol2";
         string path = @"..\..\..\..\SnakeVol2\scoresXML.xml";
         public List<Score> Scores = new List<Score>();
         public void SaveScores(string namee, int scoree)
         {
-            if (Scores.Count == 0)
+            if (NameCheck(namee, scoree))
+            {
+                if(Scores[number].score > scoree)
+                {
+                    Console.SetCursorPosition(20, 32);
+                    Console.WriteLine(namee + " Old Score was better, unchanged");
+                }
+                else
+                {
+                    Scores[number].score = scoree;
+                    Console.SetCursorPosition(20, 32);
+                    Console.WriteLine(namee + " Score Updated");
+                }
+            }
+            else if(!NameCheck(namee, scoree))
             {
                 Score scoress = new Score
                 {
@@ -25,34 +40,48 @@ namespace SnakeVol2
                 Scores.Add(scoress);
                 Console.SetCursorPosition(20, 32);
                 Console.WriteLine(namee + "Score Saved");
+                return;
+            }
+            
+        }
+        public void SaveScoresXML(string namee, int scoree)
+        {
+            NameCheck(namee, scoree);
+            if (NameCheck(namee, scoree))
+            {
+                Scores[number].score = scoree;
+                return;
             }
             else
             {
-                for (int i = 0; i < Scores.Count; i++)
+                Score scoress = new Score
                 {
-                    if (Scores[i].name == namee)
-                    {
-                        Scores[i].score = scoree;
-                        Console.SetCursorPosition(20, 32);
-                        Console.WriteLine(namee + " Score Updated");
-                        return;
-                    }
-                    else
-                    {
-                        Score scoress = new Score
-                        {
-                            name = namee,
-                            score = scoree,
-                            id = i
-                        };
-                        Scores.Add(scoress);
-                        Console.SetCursorPosition(20, 32);
-                        Console.WriteLine(namee + "Score Saved");
-                        return;
-                    }
+                    name = namee,
+                    score = scoree,
+                };
+                Scores.Add(scoress);
+                return;
+            }
+
+        }
+
+        public bool NameCheck(string namee, int scoree)
+        {
+            bool idiot = false;
+            for (int i = 0; i < Scores.Count; i++)
+            {
+                if (Scores[i].name == namee)
+                {
+                    number = i;
+                    idiot = true;
+                    break;
+                }
+                else
+                {
+                    idiot = false;
                 }
             }
-            
+            return idiot;
         }
         public void DisplayScores()
         {
@@ -97,7 +126,7 @@ namespace SnakeVol2
         {
             for (int i = 0; i < ScoresTemp.Count; i++)
             {
-                SaveScores(ScoresTemp[i].name, ScoresTemp[i].score);
+                SaveScoresXML(ScoresTemp[i].name, ScoresTemp[i].score);
             }
         }
 

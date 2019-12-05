@@ -8,21 +8,17 @@
     ".NETCoreApp,Version=v3.0": []
   },
   "packageFolders": {
-    "C:\\Users\\marti\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\marti\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marti\\source\\repos\\SnakeVol2\\SnakeVol2\\SnakeVol2.csproj",
+      "projectUniqueName": "C:\\Users\\marti\\source\\repos\\SnakeVol2\\SnakeVol2.csproj",
       "projectName": "SnakeVol2",
-      "projectPath": "C:\\Users\\marti\\source\\repos\\SnakeVol2\\SnakeVol2\\SnakeVol2.csproj",
+      "projectPath": "C:\\Users\\marti\\source\\repos\\SnakeVol2\\SnakeVol2.csproj",
       "packagesPath": "C:\\Users\\marti\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marti\\source\\repos\\SnakeVol2\\SnakeVol2\\obj\\",
+      "outputPath": "C:\\Users\\marti\\source\\repos\\SnakeVol2\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\marti\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
